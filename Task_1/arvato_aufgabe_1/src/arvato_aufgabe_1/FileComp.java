@@ -10,14 +10,16 @@ public class FileComp {
 	List<String> file2;
 	String fileName1;
 	String fileName2;
-	JSONObject result = new JSONObject();
+	
 
 	public static void main(String[] args) {
+		JSONObject result = new JSONObject();
 		FileComp compFiles = new FileComp();
 		// set the path and the name for both files!
 		compFiles.fileName1 = "ExampleData/List1.txt";
 		compFiles.fileName2 = "ExampleData/List2.txt";
-		compFiles.compareFiles(compFiles.fileName1, compFiles.fileName2);
+		result = compFiles.compareFiles(compFiles.fileName1, compFiles.fileName2);
+		System.out.println(result.toString());
 	}
 	
 	/**
@@ -26,8 +28,8 @@ public class FileComp {
 	 * @param fN1 path to the first file
 	 * @param fN2 path to the second file
 	 */
-	public void compareFiles(String fN1, String fN2) {
-		
+	public JSONObject compareFiles(String fN1, String fN2) {
+		JSONObject result = new JSONObject();
 		// convert both files to a list of strings
 		txtReader tR = new txtReader();
 		file1 = tR.readFile(fN1);
@@ -54,8 +56,7 @@ public class FileComp {
 			e.printStackTrace();
 		}
 		
-		// print the result to the console
-		System.out.println(result.toString());
+		return result;
 	}
 
 }
